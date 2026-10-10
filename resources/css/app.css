@@ -1,0 +1,380 @@
+/* ==========================================================================
+   E-Rapor SLB Insan Mutiara — Design System (Vanilla CSS)
+   ========================================================================== */
+
+:root {
+    --maroon-900: #5c0016;
+    --maroon-700: #80001f;
+    --maroon-600: #96102f;
+    --maroon-50: #fbeef1;
+
+    --ink-900: #1a2238;
+    --ink-600: #4b5878;
+    --ink-500: #6b7894;
+    --ink-400: #8a94ab;
+
+    --bg-page: #f7f5f6;
+    --bg-card: #ffffff;
+    --bg-soft: #f6f4f5;
+    --border: #e3e6ee;
+    --border-strong: #d3d8e4;
+
+    --danger-bg: #fff0ef;
+    --danger-border: #fbd9d6;
+    --danger-ink: #b93a3a;
+
+    --success-bg: #e9f6ec;
+    --success-border: #bfe3c7;
+    --success-ink: #1e7a34;
+
+    --radius-card: 18px;
+    --radius-field: 10px;
+    --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font);
+    color: var(--ink-900);
+    background: var(--bg-page);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--maroon-700);
+    text-decoration: none;
+}
+
+/* ---------- Auth layout ---------- */
+.auth-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    gap: 22px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 342px;
+    background: var(--bg-card);
+    border: 1px solid #ece9ea;
+    border-radius: var(--radius-card);
+    padding: 25px;
+    box-shadow: 0 1px 2px rgba(26, 34, 56, 0.04), 0 12px 32px -12px rgba(128, 0, 31, 0.1);
+    animation: card-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes card-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-title {
+    margin: 0 0 6px;
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--maroon-700);
+}
+
+.auth-subtitle {
+    margin: 0 0 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-500);
+}
+
+.auth-note {
+    margin: 18px 0 0;
+    font-size: 10px;
+    color: var(--ink-500);
+}
+
+.auth-note strong {
+    font-weight: 500;
+    color: var(--ink-600);
+}
+
+.auth-footer {
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.9;
+    color: var(--ink-500);
+}
+
+.auth-footer p {
+    margin: 0;
+}
+
+.auth-footer .copyright {
+    margin-top: 10px;
+    font-size: 10.5px;
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 11px;
+    line-height: 1.55;
+    animation: alert-in 0.3s ease both;
+}
+
+@keyframes alert-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.alert__icon {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+}
+
+.alert__title {
+    margin: 0 0 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.alert__text {
+    margin: 0;
+}
+
+.alert--danger {
+    background: var(--danger-bg);
+    border-color: var(--danger-border);
+    color: var(--danger-ink);
+}
+
+.alert--success {
+    display: block;
+    background: var(--success-bg);
+    border-color: var(--success-border);
+    color: var(--success-ink);
+}
+
+.alert--success .alert__title {
+    font-size: 13px;
+}
+
+/* ---------- Form ---------- */
+.field {
+    margin-bottom: 16px;
+}
+
+.field__label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--maroon-700);
+}
+
+.field__input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    font: inherit;
+    font-size: 12px;
+    color: var(--ink-900);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-field);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field__input::placeholder {
+    color: var(--ink-500);
+}
+
+.field__input:hover {
+    border-color: var(--border-strong);
+}
+
+.field__input:focus {
+    border-color: var(--maroon-700);
+    box-shadow: 0 0 0 3px rgba(128, 0, 31, 0.12);
+}
+
+.field__input.is-invalid {
+    border-color: var(--danger-ink);
+}
+
+.field__error {
+    margin: 6px 0 0;
+    font-size: 10.5px;
+    color: var(--danger-ink);
+}
+
+.field__password {
+    position: relative;
+}
+
+.field__password .field__input {
+    padding-right: 40px;
+}
+
+.field__toggle {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: var(--ink-400);
+    background: none;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: color 0.15s, background 0.15s;
+}
+
+.field__toggle:hover {
+    color: var(--maroon-700);
+    background: var(--maroon-50);
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: -2px 0 16px;
+    font-size: 10.5px;
+}
+
+.check {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--maroon-700);
+    cursor: pointer;
+    user-select: none;
+}
+
+.check input {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    accent-color: var(--maroon-700);
+    cursor: pointer;
+}
+
+.link {
+    font-size: 10.5px;
+    color: var(--maroon-700);
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    height: 40px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--maroon-700);
+    border: 0;
+    border-radius: var(--radius-field);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+.btn:hover {
+    background: var(--maroon-600);
+    box-shadow: 0 6px 16px -6px rgba(128, 0, 31, 0.55);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn:focus-visible {
+    outline: 3px solid rgba(128, 0, 31, 0.3);
+    outline-offset: 2px;
+}
+
+.btn__arrow {
+    transition: transform 0.15s;
+}
+
+.btn:hover .btn__arrow {
+    transform: translateX(3px);
+}
+
+/* ---------- Forgot password ---------- */
+.badge-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 20px;
+    color: var(--maroon-700);
+    background: var(--maroon-50);
+    border-radius: 50%;
+}
+
+.info-box {
+    margin-bottom: 20px;
+    padding: 14px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+}
+
+.info-box__title {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-900);
+}
+
+.info-box__text {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--ink-500);
+}
+
+/* ---------- Dashboard placeholder ---------- */
+.placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+.placeholder .auth-card {
+    max-width: 420px;
+}
